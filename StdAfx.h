@@ -34,7 +34,7 @@
 #define STTE_INTERV			"B"
 
 //#define DHA55_COMPILE_NOHDW
-//#define STTE_COMPILE_02
+#define STTE_COMPILE_02
 
 
 // ----- Control Macroes ------------------------------

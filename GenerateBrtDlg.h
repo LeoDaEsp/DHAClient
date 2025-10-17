@@ -9,7 +9,6 @@
 
 class CGenerateBrtDlg : public CDialog
 {
-	friend class CRemotePanel;
 	DECLARE_DYNAMIC(CGenerateBrtDlg)
 
 	// =====================================================================================
