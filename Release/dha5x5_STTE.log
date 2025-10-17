@@ -1,0 +1,63 @@
+﻿  StdAfx.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+  BrtBuilderDlg.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\BrtBuilderDlg.cpp(411,47): warning C4244: 'argomento': conversione da 'DWORD' a 'BYTE'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\BrtBuilderDlg.cpp(418,45): warning C4244: 'argomento': conversione da 'DWORD' a 'BYTE'. Possibile perdita di dati.
+  BrtDlg.cpp
+  BrtFbkCalibDlg.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\BrtFbkCalibDlg.cpp(282,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\BrtFbkCalibDlg.cpp(283,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
+  BtlFile.cpp
+  ClientTCPMng.cpp
+  CnfFile.cpp
+  ComDlg.cpp
+  CRemotePanel.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(627,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(679,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(729,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(779,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1337,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1350,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1371,64): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1386,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1408,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1421,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1445,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(1457,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemotePanel.cpp(2158,25): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  CRemoteProcess.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemoteProcess.cpp(25,21): warning C4305: '=': troncamento da '<unnamed-enum-TCP_PORT>' a 'WORD'
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemoteProcess.cpp(25,13): warning C4309: '=': troncamento di valore costante
+D:\Dario\DHA\Dha5x5_STTE_r857\CRemoteProcess.cpp(67,20): warning C4018: '<': errata corrispondenza tra signed e unsigned
+  dha5x5_STTE.cpp
+  dha5x5_STTEDlg.cpp
+  DhaStteDevice.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\DhaStteDevice.cpp(1667,26): warning C4305: '=': troncamento da 'int' a 'BYTE'
+D:\Dario\DHA\Dha5x5_STTE_r857\DhaStteDevice.cpp(1667,23): warning C4309: '=': troncamento di valore costante
+  EditIpDlg.cpp
+  EnhMaintDlg.cpp
+  FMT_DIB.cpp
+  FMT_TraceCtrl.cpp
+  FMT_Wnd.cpp
+  GenerateBrtDlg.cpp
+  INI.cpp
+  IniFileMng.cpp
+  Generazione del codice in corso...
+D:\Dario\DHA\Dha5x5_STTE_r857\DhaStteDevice.cpp(1768): warning C4715: 'CDhaStteDevice::EnableLog': non tutti i percorsi di controllo restituiscono un valore
+  Compilazione in corso...
+  LoaderDlg.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\LoaderDlg.cpp(1397,9): warning C4101: 'dwRet': variabile locale senza riferimenti
+  MaintDlg.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\MaintDlg.cpp(213,28): warning C4244: 'argomento': conversione da 'DWORD' a 'BYTE'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857\MaintDlg.cpp(229,28): warning C4244: 'argomento': conversione da 'DWORD' a 'BYTE'. Possibile perdita di dati.
+  MaintMpp.cpp
+  MMDlg.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857\MMDlg.cpp(1611,35): warning C4018: '<': errata corrispondenza tra signed e unsigned
+  SelectUnitDlg.cpp
+  SmartListCtrl.cpp
+  SmartStatic.cpp
+  StatusListCtrl.cpp
+  StteConfigDlg.cpp
+  Thrd.cpp
+  Generazione del codice in corso...
+  dha5x5_STTE.vcxproj -> D:\Dario\DHA\Dha5x5_STTE_r857\Release\dha5x5_STTE.exe
