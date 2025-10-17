@@ -1909,7 +1909,7 @@ bool CRemotePanel::_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(int TargetBrightness) {
 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Set brightness operative curves"));
 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
 
-	if (TargetBrightness >= 0 && TargetBrightness < 255) {
+	if (TargetBrightness >= 0 && TargetBrightness <= 255) {
 
 		CComboBox *pComboBox = (CComboBox*)m_pMaint->GetDlgItem(IDC_COMBO_MNT_OPERBRT);
 
@@ -1920,7 +1920,7 @@ bool CRemotePanel::_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(int TargetBrightness) {
 	}
 	
 
-	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("The target brightness is not beetwen 0 and 254"));
+	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("The target brightness is not beetwen 0 and 255"));
 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
 
 	
