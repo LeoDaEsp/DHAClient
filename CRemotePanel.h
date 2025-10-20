@@ -16,6 +16,7 @@
 #include "CnfFile.h"
 #include "LoaderDlg.h"
 #include "DhaStteDevice.h"
+#include "BrtFbkCalibDlg.h"
 
 
 
@@ -88,6 +89,7 @@ public:
 		CMD__LCD_PATTERN_COLOR_1,
 		CMD__LCD_PATTERN_COLOR_2,
 		CMD__REBOOT,
+		CMD__CURRENT_CAL,
 
 
 		/*
@@ -199,6 +201,7 @@ private:
 	bool _cmd_CMD__BRIG_POTENTIOMETER(int TargetPot);
 	bool _cmd_CMD__BRIG_DAY(bool TargetDay);
 	bool _cmd_CMD__REBOOT();
+	bool _cmd_CMD__CURRENT_CAL(CString TargetFileName);
 
 	bool _cmd_CMD__CONNECT_COM(bool TargetConnect);
 	bool _cmd_CMD__LCD_PATTERN(CStringA TargetPattern);
@@ -242,8 +245,8 @@ private:
 	CBrtBuilderDlg* m_pBuilder;
 	CLoaderDlg* m_pLoader;
 	CFileDialog* m_pFile;
-
 	CDhaStteDevice* m_pDha;
+	CBrtFbkCalibDlg* m_pCalib;
 
 	typedef enum tmrState
 	{
@@ -269,6 +272,9 @@ private:
 
 	bool _CreateLoaderDlg(bool Open, bool ShowOption);
 	bool BrtLoaderDlg_Open = FALSE;
+
+	bool _CreateBrtFbkDlg(bool Open, bool ShowOption);
+	bool BrtFbkDlg_Open = FALSE;
 
 
 

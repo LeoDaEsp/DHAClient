@@ -36,6 +36,7 @@ static CStringA s_szRemCmds[CRemotePanel::NUM_OF__CMD] =
 	"LCD_PATTERN_COLOR_1", 			//_cmd_CMD__CMD__LCD_PATTERN_COLOR_1
 	"LCD_PATTERN_COLOR_2",			//_cmd_CMD__LCD_PATTERN_COLOR_2
 	"REBOOT",						//_cmd_CMD__REBOOT
+	"CURRENT_CAL",					//_cmd_CMD__CURRENT_CAL
 
 
 
@@ -385,6 +386,30 @@ void CRemotePanel::OnTimer(UINT_PTR nIDEvent)
 
 					_replyOk();
 					m_tmrState = TMR_STATE_IDLE;
+
+					break;
+				}
+			}
+			_replyFail();
+			m_tmrState = TMR_STATE_IDLE;
+		}
+
+
+		if (m_lastCmd == CMD__CURRENT_CAL)
+		{
+			CStringA params = m_szLastCmdParams;
+			params.Replace(CStringA(s_SeparatorId), "");
+			params.Replace(s_szRemCmds[CMD__CURRENT_CAL], "");
+			if (params != "")
+			{
+				m_LastUserMsg = _T("");
+
+
+				if (_cmd_CMD__CURRENT_CAL(params))
+				{
+
+					m_tmrState = TMR_STATE_WFOR_FINISH;
+					// m_tmrState = TMR_STATE_IDLE;
 
 					break;
 				}
@@ -1094,7 +1119,8 @@ void CRemotePanel::OnBtnTest()
 		break;
 	
 	case 3:
-		_cmd_CMD__IDC_OPER_BRT_MODE(true);
+		// _cmd_CMD__IDC_OPER_BRT_MODE(true);
+		_cmd_CMD__CURRENT_CAL("current_cal");
 		sw++;
 		break;
 	
@@ -1602,6 +1628,38 @@ bool CRemotePanel::_cmd_CMD__FREE_RSC() {
 	p->SetCheck(0);
 	(DHA)->OnCheckStartstte();
 	(DHA)->OnCancel();
+	return true;
+
+}
+
+
+bool CRemotePanel::_CreateBrtFbkDlg(bool Open, bool ShowOption) {
+	// Create Enhancement Maintenance Dialogue
+	if (BrtFbkDlg_Open == FALSE && Open) {
+
+		m_pCalib = new CBrtFbkCalibDlg();
+		m_pCalib->m_pDev = (DHA)->m_pDev;
+
+		m_pCalib->Create(IDD_BRTFBK_CALIB_DLG);
+
+		EnhMaintDlg_Open = TRUE;
+
+	}
+	else if (EnhMaintDlg_Open == TRUE && !Open) {
+
+		EnhMaintDlg_Open = FALSE;
+		m_pCalib->DestroyWindow();
+		delete m_pCalib;
+		m_pCalib = NULL;
+
+		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Destroy calibration brightness feedback window "));
+
+		return false;
+
+	}
+	if (ShowOption)
+		m_pCalib->ShowWindow(ShowOption);
+
 	return true;
 
 }
@@ -2294,6 +2352,69 @@ bool CRemotePanel::_cmd_CMD__LDR_WRITE(CString TargetFileName) {
 
 }
 
+bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
+
+	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Calibration brightness feedback"));
+	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
+
+	CRemotePanel::_CreateBrtFbkDlg(TRUE, TRUE);
+
+
+
+	CBrtFbkCalibDlg		dlg;
+
+	CString  FileName;
+
+	KillTimer(STTE_MAINT_TIMER_ID);
+
+
+	// --- Select Configuration file ----------------------------------------------------------------------
+
+	CString			sPath;
+
+	CFileDialog* pDlg = new CFileDialog(FALSE, "bin", NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST,
+		"Binary File (*.bin) | *.bin|", this);
+
+	// pDlg->m_ofn.lpstrTitle = "Select Configuration File to update";
+	// 
+	// if (pDlg->DoModal() == IDOK)
+	// {
+	// 	sPath = pDlg->GetPathName();
+	// 
+	// 	delete pDlg;
+	// }
+	// else
+	// {
+	// 	delete pDlg;
+	// 	return;
+	// }
+
+	// FileName = TargetFileName + "_" + CString(CRemotePanel::_touchFile().c_str()) + ".bin"; // Converti da string a CString
+	FileName = TargetFileName + ".bin"; // Converti da string a CString
+
+	// m_pLoader->m_sFilePath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + TargetFileName + "\\" + FileName;
+
+	m_pCalib->m_sCnfPath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + FileName;
+
+
+
+
+	// dlg.m_pDev = m_pDev;
+	// dlg.m_sCnfPath = sPath;
+
+	// dlg.DoModal();
+
+	SetTimer(STTE_MAINT_TIMER_ID, STTE_MAINT_TIMER_VAL, NULL);
+	SetTimer(DHA55_CALIBTIMER_ID, DHA55_CALIBTIMER_VAL, NULL);
+
+	m_pCalib->OnTimer(DHA55_CALIBTIMER_ID);
+
+
+
+	return true;
+
+}
+
 
 bool CRemotePanel::_cmd_CMD__LDR_READ(CString TargetFileName) {
 
@@ -2593,6 +2714,39 @@ void CRemotePanel::_manageWFFState()
 				// delete m_pLoader;
 				// m_pLoader = NULL;
 				
+			}
+		}
+		if (m_lastCmd == CMD__CURRENT_CAL)
+		{
+
+
+			if (sText == _T("Configuration File correctly updated"))
+			{
+				_replyOk();
+
+				m_tmrState = TMR_STATE_IDLE;
+
+				CRemotePanel::_CreateBrtFbkDlg(FALSE, FALSE);
+
+				// m_pLoader->KillTimer(STTE_CFGLOADER_TIMER_ID);
+				// m_pLoader->DestroyWindow();
+				// delete m_pLoader;
+				// m_pLoader = NULL;
+
+
+			}
+			else
+			{
+				_replyFail();
+				m_tmrState = TMR_STATE_IDLE;
+
+				CRemotePanel::_CreateLoaderDlg(FALSE, FALSE);
+
+				// m_pLoader->KillTimer(STTE_CFGLOADER_TIMER_ID);
+				// m_pLoader->DestroyWindow();
+				// delete m_pLoader;
+				// m_pLoader = NULL;
+
 			}
 		}
 
