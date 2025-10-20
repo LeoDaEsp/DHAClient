@@ -1114,7 +1114,7 @@ void CRemotePanel::OnBtnTest()
 		break;
 	
 	case 2:
-		_cmd_CMD__CONNECT_COM(TRUE);
+		_cmd_CMD__CONNECT_COM(FALSE);
 		sw++;
 		break;
 	
@@ -2357,7 +2357,14 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Calibration brightness feedback"));
 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
 
+	KillTimer(STTE_MAINT_TIMER_ID);
+
+	
+
+
 	CRemotePanel::_CreateBrtFbkDlg(TRUE, TRUE);
+
+	m_pCalib->OnInitDialog();
 
 
 
@@ -2365,7 +2372,7 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 
 	CString  FileName;
 
-	KillTimer(STTE_MAINT_TIMER_ID);
+	
 
 
 	// --- Select Configuration file ----------------------------------------------------------------------
@@ -2404,8 +2411,8 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 
 	// dlg.DoModal();
 
-	SetTimer(STTE_MAINT_TIMER_ID, STTE_MAINT_TIMER_VAL, NULL);
-	SetTimer(DHA55_CALIBTIMER_ID, DHA55_CALIBTIMER_VAL, NULL);
+	// SetTimer(STTE_MAINT_TIMER_ID, STTE_MAINT_TIMER_VAL, NULL);
+	// SetTimer(DHA55_CALIBTIMER_ID, DHA55_CALIBTIMER_VAL, NULL);
 
 	m_pCalib->OnTimer(DHA55_CALIBTIMER_ID);
 
@@ -2718,6 +2725,8 @@ void CRemotePanel::_manageWFFState()
 		}
 		if (m_lastCmd == CMD__CURRENT_CAL)
 		{
+
+			M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("E entrato nel ic calibarte curr"));
 
 
 			if (sText == _T("Configuration File correctly updated"))

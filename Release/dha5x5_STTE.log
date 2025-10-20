@@ -5,8 +5,8 @@ D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtBuilderDlg.cpp(411,47
 D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtBuilderDlg.cpp(418,45): warning C4244: 'argomento': conversione da 'DWORD' a 'BYTE'. Possibile perdita di dati.
   BrtDlg.cpp
   BrtFbkCalibDlg.cpp
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtFbkCalibDlg.cpp(281,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
 D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtFbkCalibDlg.cpp(282,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtFbkCalibDlg.cpp(283,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
   BtlFile.cpp
   ClientTCPMng.cpp
   CnfFile.cpp
