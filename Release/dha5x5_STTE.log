@@ -5,26 +5,26 @@ D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtBuilderDlg.cpp(411,47
 D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtBuilderDlg.cpp(418,45): warning C4244: 'argomento': conversione da 'DWORD' a 'BYTE'. Possibile perdita di dati.
   BrtDlg.cpp
   BrtFbkCalibDlg.cpp
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtFbkCalibDlg.cpp(281,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
 D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtFbkCalibDlg.cpp(282,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\BrtFbkCalibDlg.cpp(283,75): warning C4244: '=': conversione da 't_FMT_Uint64' a 'DWORD'. Possibile perdita di dati.
   BtlFile.cpp
   ClientTCPMng.cpp
   CnfFile.cpp
   ComDlg.cpp
   CRemotePanel.cpp
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(652,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(704,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(754,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(804,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1363,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1376,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1397,64): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1412,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1434,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1447,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1471,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1483,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
-D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(2216,25): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(653,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(705,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(755,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(805,19): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1364,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1377,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1398,64): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1413,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1435,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1448,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1472,9): warning C4244: 'return': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(1484,47): warning C4244: '=': conversione da 'double' a 'WORD'. Possibile perdita di dati.
+D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemotePanel.cpp(2217,25): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   CRemoteProcess.cpp
 D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemoteProcess.cpp(25,21): warning C4305: '=': troncamento da '<unnamed-enum-TCP_PORT>' a 'WORD'
 D:\Dario\DHA\Dha5x5_STTE_r857_mod\Dha5x5_STTE_Srcs_r857\CRemoteProcess.cpp(25,13): warning C4309: '=': troncamento di valore costante

@@ -45,6 +45,7 @@ public:
 	double					m_dLo;
 
 	CString					m_sCnfPath;
+	CFMT_String				LastFbkCalib;
 
 
 	// =====================================================================================
