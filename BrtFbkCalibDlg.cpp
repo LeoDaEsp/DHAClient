@@ -350,6 +350,8 @@ BOOL CBrtFbkCalibDlg::CalibTimerActions()
 					LastFbkCalib = LastFbkCalib + "LastBrtFbkCalib.txt";
 
 					f.Open(LastFbkCalib, CFMT_File::e_OpenMode_Overwrite | CFMT_File::e_OpenMode_Write);
+					// f.Open("LastBrtFbkCalib.txt", CFMT_File::e_OpenMode_Overwrite | CFMT_File::e_OpenMode_Write);
+					
 					f.WriteTextLine("--- Day -------------------------------------");
 					f.WriteTextLine("");
 					for (k=0; k<256; k++)

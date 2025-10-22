@@ -1115,13 +1115,13 @@ void CRemotePanel::OnBtnTest()
 		break;
 	
 	case 2:
-		_cmd_CMD__CONNECT_COM(FALSE);
+		_cmd_CMD__CONNECT_COM(true);
 		sw++;
 		break;
 	
 	case 3:
 		// _cmd_CMD__IDC_OPER_BRT_MODE(true);
-		_cmd_CMD__CURRENT_CAL("current_cal");
+		_cmd_CMD__CURRENT_CAL("calibrazione_corrente");
 		sw++;
 		break;
 	
@@ -2365,7 +2365,7 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 
 	CRemotePanel::_CreateBrtFbkDlg(TRUE, TRUE);
 
-	m_pCalib->OnInitDialog();
+	// m_pCalib->OnInitDialog();
 
 
 
@@ -2380,8 +2380,7 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 
 	CString			sPath;
 
-	CFileDialog* pDlg = new CFileDialog(FALSE, "bin", NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST,
-		"Binary File (*.bin) | *.bin|", this);
+	// CFileDialog* pDlg = new CFileDialog(FALSE, "bin", NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, "Binary File (*.bin) | *.bin|", this);
 
 	// pDlg->m_ofn.lpstrTitle = "Select Configuration File to update";
 	// 
@@ -2403,7 +2402,10 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 	// m_pLoader->m_sFilePath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + TargetFileName + "\\" + FileName;
 
 	m_pCalib->m_sCnfPath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + FileName;
+
 	m_pCalib->LastFbkCalib = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH];
+
+
 
 
 
