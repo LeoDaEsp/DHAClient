@@ -414,7 +414,7 @@ void CRemotePanel::OnTimer(UINT_PTR nIDEvent)
 					break;
 				}
 			}
-			M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("CURRENT CAL fail"));
+
 			_replyFail();
 			m_tmrState = TMR_STATE_IDLE;
 		}
@@ -2373,6 +2373,8 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 
 	CString  FileName;
 
+	CString  ResultName;
+
 	
 
 
@@ -2396,14 +2398,15 @@ bool CRemotePanel::_cmd_CMD__CURRENT_CAL(CString TargetFileName) {
 	// 	return;
 	// }
 
-	// FileName = TargetFileName + "_" + CString(CRemotePanel::_touchFile().c_str()) + ".bin"; // Converti da string a CString
+	// Define target binary file
 	FileName = TargetFileName + ".bin"; // Converti da string a CString
-
-	// m_pLoader->m_sFilePath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + TargetFileName + "\\" + FileName;
 
 	m_pCalib->m_sCnfPath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + FileName;
 
-	m_pCalib->LastFbkCalib = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH];
+	// Define target result calibration file
+	ResultName = TargetFileName + ".txt"; // Converti da string a CString
+
+	m_pCalib->LastFbkCalib = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + ResultName;
 
 
 
@@ -2730,7 +2733,6 @@ void CRemotePanel::_manageWFFState()
 		if (m_lastCmd == CMD__CURRENT_CAL)
 		{
 
-			M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("E entrato nel ciclo calibarte curr"));
 
 
 			if (sText == _T("Configuration File correctly updated"))

@@ -347,7 +347,7 @@ BOOL CBrtFbkCalibDlg::CalibTimerActions()
 
 					CFMT_File		f;
 					DWORD			k;
-					LastFbkCalib = LastFbkCalib + "LastBrtFbkCalib.txt";
+					// LastFbkCalib = LastFbkCalib + "LastBrtFbkCalib.txt";
 
 					f.Open(LastFbkCalib, CFMT_File::e_OpenMode_Overwrite | CFMT_File::e_OpenMode_Write);
 					// f.Open("LastBrtFbkCalib.txt", CFMT_File::e_OpenMode_Overwrite | CFMT_File::e_OpenMode_Write);
