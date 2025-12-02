@@ -90,6 +90,7 @@ public:
 		CMD__LCD_PATTERN_COLOR_2,
 		CMD__REBOOT,
 		CMD__CURRENT_CAL,
+		CMD__DESTROY_MAINT,
 
 
 		/*
@@ -121,6 +122,7 @@ public:
 
 
 	void* m_pMainDlg;
+	// void* m_pDev1;
 	// CDhaStteDevice* m_pDev;
 
 	
@@ -194,6 +196,7 @@ private:
 	bool _cmd_CMD__prova_disconnect_heater();
 	bool _cmd_CMD__prova_connect_heater();
 	bool _cmd_CMD__prova_destroy_win();
+	bool _cmd_CMD__DESTROY_MAINT();
 	bool _cmd_CMD__FREE_RSC();
 
 	bool _cmd_CMD__BRIG_DUTY(int TargetDuty);

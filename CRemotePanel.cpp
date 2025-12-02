@@ -19,6 +19,8 @@
 
 #define MY_DEBUG
 #define DHA (CDha5x5_STTEDlg*)m_pMainDlg
+// #define DHA1 (CDhaStteDevice*)m_pDev1
+
 
 static CStringA s_szRemCmds[CRemotePanel::NUM_OF__CMD] =
 {
@@ -37,6 +39,7 @@ static CStringA s_szRemCmds[CRemotePanel::NUM_OF__CMD] =
 	"LCD_PATTERN_COLOR_2",			//_cmd_CMD__LCD_PATTERN_COLOR_2
 	"REBOOT",						//_cmd_CMD__REBOOT
 	"CURRENT_CAL",					//_cmd_CMD__CURRENT_CAL
+	"DESTROY_MAINT",				//_cmd_CMD__DESTROY_MAINT
 
 
 
@@ -409,12 +412,44 @@ void CRemotePanel::OnTimer(UINT_PTR nIDEvent)
 				{
 
 					m_tmrState = TMR_STATE_WFOR_FINISH;
+					
+
+					// _replyOk();
 					// m_tmrState = TMR_STATE_IDLE;
 
 					break;
 				}
 			}
 
+			_replyFail();
+			m_tmrState = TMR_STATE_IDLE;
+		}
+
+		
+
+		if (m_lastCmd == CMD__DESTROY_MAINT)
+		{
+			// M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Dario des"));
+			CStringA params = m_szLastCmdParams;
+			params.Replace(CStringA(s_SeparatorId), "");
+			params.Replace(s_szRemCmds[CMD__DESTROY_MAINT], "");
+			// if (params != "")
+			{
+				m_LastUserMsg = _T("");
+		
+		
+				if (_cmd_CMD__DESTROY_MAINT())
+				{
+		
+					// m_tmrState = TMR_STATE_WFOR_FINISH;
+		
+					_replyOk();
+					m_tmrState = TMR_STATE_IDLE;
+		
+					break;
+				}
+			}
+		
 			_replyFail();
 			m_tmrState = TMR_STATE_IDLE;
 		}
@@ -995,67 +1030,67 @@ void CRemotePanel::OnBtnTest()
 	/*
 		FUNZIONI CALIBRAZIONE FINESTRA LOADER + BUILDER
 	*/
-	// switch (sw)
-	// {
-	// case 1:
-	// 
-	// 	_cmd_CMD__SYS_CONNECT(true);
-	// 	sw++;
-	// 	break;
-	// 
-	// case 2:
-	// 	_cmd_CMD__CONNECT_COM(TRUE);
-	// 	sw++;
-	// 	break;
-	// 
-	// case 3:
-	// 	_cmd_CMD__CONNECT_COM(false);
-	// 	sw++;
-	// 	break;
-	// 
-	// 
-	// case 4:
-	// 	_cmd_CMD__LDR_READ("123456789BBB");
-	// 	sw++;
-	// 	break;
-	// 
-	// case 5:
-	// 	_cmd_CMD__BUILDER_OPEN("123456789BBB");
-	// 	sw++;
-	// 	break;
-	// 
-	// case 6:
-	// 	minNvg = _cmd_CMD__BUILDER_GET_MIN_DUTY_NVG();
-	// 	sw++;
-	// 	break;
-	// 
-	// case 7:
-	// 	_cmd_CMD__BUILDER_SET_MIN_DUTY_NVG("69");
-	// 	sw++;
-	// 	break;
-	// 
-	// case 8:
-	// 	_cmd_CMD__BUILDER_INFO_CODE("987654321");
-	// 	sw++;
-	// 	break;
-	// 
-	// case 9:
-	// 	_cmd_CMD__BUILDER_SAVE("new\\123456789BBB");
-	// 	sw++;
-	// 	break;
-	// 	
-	// 
-	// case 10:
-	// 	_cmd_CMD__SYS_CONNECT(false);
-	// 	sw++;
-	// 	break;
-	// 
-	// case 11:
-	// 	_cmd_CMD__FREE_RSC();
-	// 	sw++;
-	// 	break;
-	// 
-	// }
+	switch (sw)
+	{
+	case 1:
+	
+		_cmd_CMD__SYS_CONNECT(true);
+		sw++;
+		break;
+	
+	case 2:
+		_cmd_CMD__CONNECT_COM(TRUE);
+		sw++;
+		break;
+	
+	case 3:
+		_cmd_CMD__CONNECT_COM(false);
+		sw++;
+		break;
+	
+	
+	case 4:
+		// _cmd_CMD__LDR_READ("123456789BBB");
+		sw++;
+		break;
+	
+	case 5:
+		_cmd_CMD__BUILDER_OPEN("123456789BBB");
+		sw++;
+		break;
+	
+	case 6:
+		// minNvg = _cmd_CMD__BUILDER_GET_MIN_DUTY_NVG();
+		sw++;
+		break;
+	
+	case 7:
+		_cmd_CMD__BUILDER_SET_MAX_DUTY_DAY("69");
+		sw++;
+		break;
+	
+	case 8:
+		// _cmd_CMD__BUILDER_INFO_CODE("987654321");
+		sw++;
+		break;
+	
+	case 9:
+		_cmd_CMD__BUILDER_SAVE("new\\123456789BBB");
+		sw++;
+		break;
+		
+	
+	case 10:
+		_cmd_CMD__SYS_CONNECT(false);
+		sw++;
+		break;
+	
+	case 11:
+		_cmd_CMD__FREE_RSC();
+		sw++;
+		break;
+	
+	}
 
 	/*
 	FUNZIONI CALIBRAZIONE FINESTRA LOADER WRITE
@@ -1106,74 +1141,74 @@ void CRemotePanel::OnBtnTest()
 	// /*
 	// 	FUNZIONI CALIBRAZIONE FINESTRA DI MAINTENANCE
 	// */	
-	switch (sw)
-	{
-	case 1:
-	
-		_cmd_CMD__SYS_CONNECT(true);
-		sw++;
-		break;
-	
-	case 2:
-		_cmd_CMD__CONNECT_COM(true);
-		sw++;
-		break;
-	
-	case 3:
-		// _cmd_CMD__IDC_OPER_BRT_MODE(true);
-		_cmd_CMD__CURRENT_CAL("calibrazione_corrente");
-		sw++;
-		break;
-	
-	case 4:
-		_cmd_CMD__IDC_OPER_BRT_MODE(false);
-		sw++;
-		break;
-	
-	case 5:
-		_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(0);
-		sw++;
-		break;
-	
-	case 6:
-		_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(254);
-		sw++;
-		break;
-	
-	case 7:
-		_cmd_CMD__OPR_CRV_BRIGHTNESS_GET();
-		sw++;
-		break;
-	
-	case 8:
-	
-		_cmd_CMD__BRIG_DAY(TRUE);
-		sw++;
-		break;
-
-	case 9:
-
-		_cmd_CMD__REBOOT();
-		sw++;
-		break;
-
-	
-	case 10:
-		_cmd_CMD__CONNECT_COM(false);
-		sw++;
-		break;
-	
-	case 11:
-		_cmd_CMD__SYS_CONNECT(false);
-		sw++;
-		break;
-	
-	case 12:
-		_cmd_CMD__FREE_RSC();
-		sw++;
-		break;
-	
-	}
+	// switch (sw)
+	// {
+	// case 1:
+	// 
+	// 	_cmd_CMD__SYS_CONNECT(true);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 2:
+	// 	_cmd_CMD__CONNECT_COM(true);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 3:
+	// 	_cmd_CMD__IDC_OPER_BRT_MODE(true);
+	// 	// _cmd_CMD__CURRENT_CAL("calibrazione_corrente");
+	// 	sw++;
+	// 	break;
+	// 
+	// case 4:
+	// 	// _cmd_CMD__IDC_OPER_BRT_MODE(false);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 5:
+	// 	_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(0);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 6:
+	// 	_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(254);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 7:
+	// 	_cmd_CMD__OPR_CRV_BRIGHTNESS_GET();
+	// 	sw++;
+	// 	break;
+	// 
+	// case 8:
+	// 
+	// 	_cmd_CMD__BRIG_DAY(TRUE);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 9:
+	// 
+	// 	_cmd_CMD__REBOOT();
+	// 	sw++;
+	// 	break;
+	// 
+	// 
+	// case 10:
+	// 	_cmd_CMD__CONNECT_COM(false);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 11:
+	// 	_cmd_CMD__SYS_CONNECT(false);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 12:
+	// 	_cmd_CMD__FREE_RSC();
+	// 	sw++;
+	// 	break;
+	// 
+	// }
 
 	/*
 	FUNZIONI GENARALI
@@ -1193,7 +1228,7 @@ void CRemotePanel::OnBtnTest()
 	// 
 	// 	case 3:
 	// 
-	// 		_cmd_CMD__BRIG_DUTY(5000);
+	// 		_cmd_CMD__BRIG_DUTY(50000);
 	// 		sw++;
 	// 		break;
 	// 
@@ -1278,6 +1313,115 @@ void CRemotePanel::OnBtnTest()
 	// 
 	// }
 
+	/*
+	FUNZIONI GENARALI
+	*/
+
+	// switch (sw) {
+	// case 1:
+	// 
+	// 	_cmd_CMD__SYS_CONNECT(true);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 2:
+	// 	_cmd_CMD__CONNECT_COM(TRUE);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 3:
+	// 	_cmd_CMD__CURRENT_CAL("calibrazione_corrente");
+	// 	// _cmd_CMD__BRIG_DUTY(60000);
+	// 	// _cmd_CMD__BRIG_CURRENT(3000);
+	// 	// _cmd_CMD__CONNECT_COM(TRUE);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 4:
+	// 	_cmd_CMD__CONNECT_COM(TRUE);
+	// 	// _cmd_CMD__BRIG_CURRENT(3000);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 5:
+	// 	_cmd_CMD__BRIG_POTENTIOMETER(1);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 6:
+	// 
+	// 	_cmd_CMD__BRIG_DAY(FALSE);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 7:
+	// 	_cmd_CMD__LCD_PATTERN("Crosshair");
+	// 	sw++;
+	// 	break;
+	// 
+	// case 8:
+	// 	_cmd_CMD__LCD_PATTERN_COLOR_1("W");
+	// 	sw++;
+	// 	break;
+	// 
+	// case 9:
+	// 	_cmd_CMD__LCD_PATTERN_COLOR_2("B");
+	// 	sw++;
+	// 	break;
+	// 
+	// case 10:
+	// 	// _cmd_CMD__CONNECT_COM(false);
+	// 	_cmd_CMD__IDC_OPER_BRT_MODE(true);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 11:
+	// 	// _cmd_CMD__LDR_READ("123456789XXX");
+	// 	_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(254);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 12:
+	// 	// _cmd_CMD__BUILDER_OPEN("123456789XXX");
+	// 	_cmd_CMD__BRIG_DAY(TRUE);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 13:
+	// 	// _cmd_CMD__BUILDER_INFO("727", "01-09-2025", "Dario", "Dario Esposito");
+	// 	_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(100);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 14:
+	// 	// _cmd_CMD__BUILDER_SAVE("dario.bin");
+	// 	sw++;
+	// 	break;
+	// 
+	// case 15:
+	// 	// _cmd_CMD__BUILDER_INFO("727", "15 Aprile 25", "Dario Pio", "Dario Esposito");
+	// 	sw++;
+	// 	break;
+	// 
+	// case 16:
+	// 	// _cmd_CMD__BUILDER_SAVE("dario.bin");
+	// 	sw++;
+	// 	break;
+	// 
+	// case 17:
+	// 	_cmd_CMD__SYS_CONNECT(false);
+	// 	sw++;
+	// 	break;
+	// 
+	// case 18:
+	// 	// _cmd_CMD__prova_free_resources();
+	// 	sw++;
+	// 	break;
+	// 
+	// 
+	// 
+	// }
+
 // #endif
 
 }
@@ -1349,6 +1493,7 @@ bool CRemotePanel::_cmd_CMD__SYS_CONNECT(bool TargetConnect){
 }
 
 
+
 int CRemotePanel::_cmd_CMD__BUILDER_GET_MIN_DUTY_NVG() {
 
 	
@@ -1397,6 +1542,8 @@ int CRemotePanel::_cmd_CMD__BUILDER_GET_MAX_DUTY_NVG() {
 
 	MaxDutyNvg = (double)m_pBuilder->m_CnfFile.m_pwLcdPwmMaxDuty[0];
 
+	
+
 	return MaxDutyNvg;
 
 }
@@ -1411,6 +1558,8 @@ bool CRemotePanel::_cmd_CMD__BUILDER_SET_MAX_DUTY_NVG(CStringA TargetMinNvg) {
 	_CreateBuilderDlg(TRUE, TRUE);
 
 	m_pBuilder->m_CnfFile.m_pwLcdPwmMaxDuty[0] = Target;
+
+	m_pBuilder->GenerateLcdBrtPwm();
 
 	// if (_cmd_CMD__BUILDER_GET_MAX_DUTY_NVG() == TargetMinNvg) {
 	// 
@@ -1481,7 +1630,12 @@ bool CRemotePanel::_cmd_CMD__BUILDER_SET_MAX_DUTY_DAY(CStringA TargetMinNvg) {
 
 	_CreateBuilderDlg(TRUE, TRUE);
 
+	// Set mode Day
+	m_pBuilder->m_btBrtMode = 1;
+
 	m_pBuilder->m_CnfFile.m_pwLcdPwmMaxDuty[1] = Target;
+
+	m_pBuilder->GenerateLcdBrtPwm();
 
 	// if (_cmd_CMD__BUILDER_GET_MAX_DUTY_DAY() == TargetMinNvg) {
 	// 
@@ -1615,6 +1769,30 @@ bool CRemotePanel::_cmd_CMD__prova_destroy_win() {
 
 }
 
+
+bool CRemotePanel::_cmd_CMD__DESTROY_MAINT() {
+
+
+	// m_pMaint->DestroyWindow();
+	// delete m_pMaint;
+	// m_pMaint = NULL;
+
+	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Destroy window"));
+
+	_CreateEnhDlg(FALSE, FALSE);
+
+	// KillTimer(DHA55_REFRESHTIMER_ID);
+
+	m_pMaint->OnCancel();
+
+
+
+
+	return true;
+
+
+}
+
 bool CRemotePanel::_cmd_CMD__FREE_RSC() {
 
 	// DestroyWindow();
@@ -1681,9 +1859,18 @@ bool CRemotePanel::_CreateEnhDlg(bool Open, bool ShowOption) {
 	else if(EnhMaintDlg_Open == TRUE && !Open){
 
 		EnhMaintDlg_Open = FALSE;
-		m_pMaint->DestroyWindow();
-		delete m_pMaint;
-		m_pMaint = NULL;
+		m_pMaint->EnableControls(FALSE);
+		KillTimer(STTE_MAINT_TIMER_ID);
+		// KillTimer(DHA55_REFRESHTIMER_ID);
+		m_pMaint->m_pDev->DisconnectMaintenance();
+		m_pMaint->m_pDev->m_btMaintLinkStatus = CDhaStteDevice::e_LinkStatus_Off;
+
+
+
+		// EnhMaintDlg_Open = FALSE;
+		// m_pMaint->DestroyWindow();
+		// delete m_pMaint;
+		// m_pMaint = NULL;
 		
 		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Destroy maintenance window "));
 		
@@ -1795,6 +1982,8 @@ bool CRemotePanel::_cmd_CMD__BRIG_DUTY(int TargetDuty) {
 
 	CRemotePanel::_CreateEnhDlg(TRUE, TRUE);
 
+	CStringA s;
+
 
 	// Edit slider
 	CSliderCtrl *p = (CSliderCtrl*)(m_pMaint)->GetDlgItem(IDC_SLIDER_DUTY);
@@ -1802,13 +1991,15 @@ bool CRemotePanel::_cmd_CMD__BRIG_DUTY(int TargetDuty) {
 
 	// Edit Windows
 	WORD wTemp = p->GetPos();
+	// s.Format("%d", wTemp);
 	m_pMaint->m_pDev->m_pMaintDataReg[CMaintMpp::e_MppReg_Brt].SetField(0, 16, wTemp);
 	
-	CStringA s;
+	// CStringA s;
 	s.Format("%d", wTemp);
 	
 	CEdit* e = (CEdit*)(m_pMaint)->GetDlgItem(IDC_EDIT_DUTY);
 	e->SetWindowText(s);
+
 
 	return true;
 
@@ -1835,6 +2026,8 @@ bool CRemotePanel::_cmd_CMD__BRIG_CURRENT(int TargetCurrent) {
 
 	CEdit* e = (CEdit*)(m_pMaint)->GetDlgItem(IDC_EDIT_CURRENT);
 	e->SetWindowText(s);
+
+	// m_pMaint->OnHScroll(3, 0, (CScrollBar*)p);
 
 	return true;
 
@@ -1889,13 +2082,17 @@ bool CRemotePanel::_cmd_CMD__REBOOT() {
 
 bool CRemotePanel::_cmd_CMD__BRIG_DAY(bool TargetDay) {
 
-	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Brightness Day"));
+	
 
 	CRemotePanel::_CreateEnhDlg(TRUE, TRUE);
 
 	int Target = 0;
 	if (TargetDay) {
 		Target = 1;
+		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Brightness Day"));
+	}
+	else {
+		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Brightness NVG"));
 	}
 
 	CButton* p = ((CButton*)(m_pMaint)->GetDlgItem(IDC_CHECK_DAY));
@@ -1906,6 +2103,52 @@ bool CRemotePanel::_cmd_CMD__BRIG_DAY(bool TargetDay) {
 	return true;
 
 }
+
+// bool CRemotePanel::_cmd_CMD__CONNECT_COM(bool TargetConnect) {
+// 
+// 	CRemotePanel::_CreateEnhDlg(TRUE, TRUE);
+// 	CButton* p = (CButton*)(m_pMaint)->GetDlgItem(IDC_CHECK_CONNECT);
+// 	
+// 
+// 	if (TargetConnect) {
+// 		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Connection COM"));
+// 		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
+// 
+// 		CComDlg		d;
+// 
+// 		d.m_sCOM = m_iniMng.m_arIniTbCfgSzData[INI_TB_MAINT_COM];
+// 		d.m_pHdwManager = &(m_pMaint->m_pDev->m_HdwManager);
+// 
+// 
+// 		m_pMaint->m_pDev->m_sMaintLinkComPort = d.m_sCOM;
+// 		m_pMaint->m_pDev->SaveSettings();
+// 		m_pMaint->RefreshPort();
+// 
+// 
+// 		
+// 		p->SetCheck(1);
+// 
+// 		
+// 	}
+// 	else
+// 	{
+// 		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Disconnection COM"));
+// 		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
+// 		p->SetCheck(0);
+// 
+// 	}
+// 
+// 	m_pMaint->OnBnClickedCheckConnect();
+// 
+// 	// CRemotePanel::_CreateEnhDlg(FALSE, FALSE);
+// 
+// 	return TargetConnect;
+// 
+// 
+// }
+
+
+
 
 bool CRemotePanel::_cmd_CMD__CONNECT_COM(bool TargetConnect) {
 
@@ -1937,6 +2180,8 @@ bool CRemotePanel::_cmd_CMD__CONNECT_COM(bool TargetConnect) {
 	{
 		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Disconnection COM"));
 		M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
+
+		m_pMaint->RefreshPort();
 		p->SetCheck(0);
 
 	}
@@ -1949,6 +2194,7 @@ bool CRemotePanel::_cmd_CMD__CONNECT_COM(bool TargetConnect) {
 
 
 }
+
 
 int CRemotePanel::_cmd_CMD__OPR_CRV_BRIGHTNESS_GET() {
 
@@ -1968,11 +2214,16 @@ bool CRemotePanel::_cmd_CMD__OPR_CRV_BRIGHTNESS_SET(int TargetBrightness) {
 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Set brightness operative curves"));
 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
 
+	CRemotePanel::_CreateEnhDlg(TRUE, TRUE);
+
 	if (TargetBrightness >= 0 && TargetBrightness <= 255) {
 
 		CComboBox *pComboBox = (CComboBox*)m_pMaint->GetDlgItem(IDC_COMBO_MNT_OPERBRT);
 
 		pComboBox->SetCurSel(TargetBrightness);
+
+		m_pMaint->OnCbnSelendokComboMntOpBrt();
+
 
 		return true;
 
@@ -2207,6 +2458,8 @@ bool CRemotePanel::_cmd_CMD__IDC_OPER_BRT_MODE(bool TargetBrt) {
 	CButton* pButton = (CButton*)(m_pMaint->GetDlgItem(IDC_OPER_BRT_MODE));
 
 	pButton->SetCheck(TargetBrt ? 1 : 0);
+
+	m_pMaint->OnBnClickedOperBrtMode();
 
 	return TargetBrt;
 }
@@ -2622,6 +2875,44 @@ bool CRemotePanel::_cmd_CMD__BUILDER_SAVE( CString TargetName) {
 // }
 
 
+// bool CRemotePanel::_cmd_CMD__BUILDER_OPEN(CString TargetName) {
+// 
+// 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("Builder open file"));
+// 	M_GETLISTBOX(IDC_LIST_RMT_CMD)->AddString(_T("\n"));
+// 
+// 	
+// 
+// 	CCnfFile CnfF;
+// 
+// 	CStringA FileName = TargetName + ".bin";
+// 	CnfF.m_sFilePath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + FileName;
+// 
+// 	// CFileDialog* pDlg = new CFileDialog(TRUE, "bin", NULL, OFN_HIDEREADONLY, "Binary Files (*.bin) | *.bin|", this);
+// 
+// 	CRemotePanel::_CreateBuilderDlg(TRUE, TRUE);
+// 
+// 
+// 
+// 	if (m_pBuilder->m_CnfFile.Load(CnfF.m_sFilePath) != e_Return_OK)
+// 	{
+// 		STTE_Message("Cannot load Brightness File", MB_ICONSTOP, this);
+// 		return false;
+// 	}
+// 
+// 	m_pBuilder->m_dwCurNode = 0;
+// 
+// 	m_pBuilder->RefreshData();
+// 	m_pBuilder->RefreshInfo();
+// 
+// 	m_pBuilder->m_ssFilePath.SetWindowText(CnfF.m_sFilePath);
+// 
+// 	STTE_Message("Brightness File correctly loaded", MB_ICONINFORMATION, this);
+// 
+// 
+// 	return true;
+// 
+// }
+
 
 bool CRemotePanel::_cmd_CMD__BUILDER_OPEN(CString TargetName) {
 
@@ -2631,9 +2922,12 @@ bool CRemotePanel::_cmd_CMD__BUILDER_OPEN(CString TargetName) {
 	CRemotePanel::_CreateBuilderDlg(TRUE, TRUE);
 
 	CCnfFile CnfF;
-
+	
 	CStringA FileName = TargetName + ".bin";
 	CnfF.m_sFilePath = m_iniMng.m_arIniTbCfgSzData[INI_TB_CFG__LOAD_DEF_FILE_PATH] + FileName;
+
+	CFileDialog* pDlg = new CFileDialog(TRUE, "bin", NULL, OFN_HIDEREADONLY,
+		"Binary Files (*.bin) | *.bin|", this);
 
 
 
@@ -2651,7 +2945,7 @@ bool CRemotePanel::_cmd_CMD__BUILDER_OPEN(CString TargetName) {
 	m_pBuilder->m_ssFilePath.SetWindowText(CnfF.m_sFilePath);
 
 	STTE_Message("Brightness File correctly loaded", MB_ICONINFORMATION, this);
-
+	
 
 	return true;
 

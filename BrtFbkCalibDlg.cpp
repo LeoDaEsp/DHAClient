@@ -70,11 +70,11 @@ void CBrtFbkCalibDlg::OnCancel()
 {
 	KillTimer(DHA55_CALIBTIMER_ID);
 
-	if (STTE_Message("Do you want to abort calibration?", MB_ICONQUESTION | MB_YESNO) != IDYES)
-	{
-		SetTimer(DHA55_CALIBTIMER_ID, DHA55_CALIBTIMER_VAL, NULL);
-		return;
-	}
+	// if (STTE_Message("Do you want to abort calibration?", MB_ICONQUESTION | MB_YESNO) != IDYES)
+	// {
+	// 	SetTimer(DHA55_CALIBTIMER_ID, DHA55_CALIBTIMER_VAL, NULL);
+	// 	return;
+	// }
 
 	KillTimer(STTE_MAINT_TIMER_ID);
 	CDialog::OnCancel();
