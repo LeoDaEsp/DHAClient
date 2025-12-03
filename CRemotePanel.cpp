@@ -2806,7 +2806,7 @@ bool CRemotePanel::_cmd_CMD__BUILDER_INFO_CODE(CStringA Code) {
 	std::string SCode(Code.GetString());
 
 	// Code
-	CEdit* p = (CEdit*)m_pBuilder->GetDlgItem(IDC_EDIT_CODE);
+	CEdit* p = (CEdit*)m_pBuilder->GetDlgItem(IDC_EDIT_NAME);
 	p->SetWindowText(SCode.c_str());
 
 	return true;
